@@ -7,6 +7,10 @@
     $semesterduration = $semesterbegin->diff($semesterend);
     $semesterdurationdays = $semesterduration->format("%r%a");
     $semesterdurhtml = "\n <p>2021 kevadsemestri kestus on " .$semesterdurationdays ." päeva.</p> \n";
+    $today = new DateTime("now");
+    $fromsemesterbegin = $semesterbegin->diff($today);
+    $fromsemesterbegindays = $fromsemesterbegin->format("%r%a");
+    $semesterprogress = "\n" .'<p>Semester edeneb: <meter min="0" max="' .$semesterdurationdays .'" value="' .$fromsemesterbegindays .'"> </meter>.</p>' ."\n";
 ?>
 <!DOCTYPE html>
 <html lang="et">
@@ -23,6 +27,7 @@
     <?php
         echo $timehtml;
         echo $semesterdurhtml;
+        echo $semesterprogress;
     ?>
 </body>
 </html>
