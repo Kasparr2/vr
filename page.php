@@ -1,4 +1,13 @@
 <?php
+
+    //session_start();
+    require("classes/SessionManager.class.php");
+    SessionManager::sessionStart("vr", 0, "/~kaspar.reisenbuk/", "tigu.hk.tlu.ee");
+
+    require_once "../../../conf.php";
+    require_once "fnc_general.php";
+    require_once "fnc_user.php";
+
     $myname = "Kaspar Reisenbuk";
     $currenttime = date("d.m.Y H:i:s");
     $timehtml = "\n <p>Lehe avamise hetkel oli: " .$currenttime .".</p>";
@@ -68,6 +77,27 @@
     $image1 = $randomnumberarray[0];
     $image2 = $randomnumberarray[1];
     $image3 = $randomnumberarray[2];
+    //Sisselogimine
+    $notice = null;
+    $email = null;
+    $email_error = null;
+    $password_error = null;
+    //Lisan tsükkli kontrollimaks kasutajanime ja parooli.
+    if(isset($_POST["login_submit"])){
+		if (isset($_POST["email_input"]) and !empty($_POST["email_input"])){
+			$email = test_input($_POST["email_input"]);
+		} else {
+		  $email_error = "Palun sisestage oma e-postiaadress!";
+		}
+	    if (!isset($_POST["password_input"]) or strlen($_POST["password_input"]) < 8){
+		  $password_error = "Palun sisestage parool!";
+		}	  
+		if(empty($email_error) and empty($password_error)){
+		   $notice = sign_in($email, $_POST["password_input"]);
+		} else {
+			$notice = "Sisselogimine ebaõnnestus!";
+		}
+	}
 
 
 ?>
@@ -83,6 +113,17 @@
     ?>
     </h1>
     <p>See leht on valminud õppetöö raames!</p>
+    <hr>
+    <h2>Logi sisse</h2>
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <label>E-mail (kasutajatunnus):</label><br>
+    <input type="email" name="email_input" value="<?php echo $email; ?>"><span><?php echo $email_error; ?></span><br>
+    <label>Salasõna:</label><br>
+    <input name="password_input" type="password"><span><?php echo $password_error; ?></span><br>
+    <input name="login_submit" type="submit" value="Logi sisse!"><span><?php echo $notice; ?></span>
+    </form>
+    <p>Loo endale <a href = "add_user.php">kasutajakonto!</a></p> <!--Lisame konto loomise nupu-->
+    <hr>
     <?php
         echo $timehtml;
         echo $semesterdurhtml;

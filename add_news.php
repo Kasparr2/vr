@@ -1,6 +1,8 @@
 <?php
 
     require_once "../../../conf.php";
+    require_once "fnc_general.php";
+    require_once "usesession.php";
     //echo $server_host;
     $news_input_error = NULL;
     //var_dump($_POST); //On olemas ka $_GET, selle käsuga saab vormi sisu oma lehel kuvada.
@@ -36,7 +38,12 @@
         $stmt -> execute();
         $stmt -> close();
         $conn -> close(); 
+        $GLOBALS["news_input_error"] = NULL;
+        $GLOBALS["news_title"] = NULL;
+        $GLOBALS["news_content"] = NULL;
+        $GLOBALS["news_author"] = NULL;
     } 
+
 ?>
 <!DOCTYPE html>
 <html lang="et">

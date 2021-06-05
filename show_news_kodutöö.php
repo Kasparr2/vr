@@ -2,7 +2,6 @@
 
     require_once "../../../conf.php";
     require_once "fnc_general.php";
-    require_once "usesession.php";
 
     function read_news(){
         if(isset($_POST["show_news"])) {
@@ -28,7 +27,7 @@
         while ($stmt -> fetch()){
             $raw_news_html .= "\n <h2>" .$news_title_from_db ."</h2>";
             $news_date = new DateTime($news_added_from_db);     //Lisan postitustele aja.
-            $raw_news_html .= "\n <p> Lisatud: " .$news_date->format("m.d.Y H:i") . "</p>"; //Kuvan aja välja pealkirja alla.
+            $raw_news_html .= "\n <p> Lisatud: " .$news_date -> format("m.d.Y H:i") . "</p>"; //Kuvan aja välja pealkirja alla.
             $raw_news_html .= "\n <p>" .nl2br($news_content_from_db) ."</p>";
             $raw_news_html .= "\n <p>Edastas: ";
             if(!empty($news_author_from_db)){
@@ -43,6 +42,7 @@
         return $raw_news_html;
     }
     $news_html = read_news();
+
 ?>
 <!DOCTYPE html>
 <html lang="et">
@@ -52,7 +52,7 @@
 <body>
     <h1>Uudiste lugemine</h1>
     <p>See leht on valminud õppetöö raames!</p>
-    <form method="POST"> <!-- Sellega kuvan uudised välja. -->
+    <form method="POST"action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> <!-- Sellega kuvan uudised välja. -->
 	<input type="number" min="0" max="10" value="" name="count_news">
 	<input type="submit" name="show_news" value="Kuva uudised">
 	</form>
