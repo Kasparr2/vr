@@ -43,7 +43,7 @@ function sign_up($name, $surname, $gender, $birth_date, $email, $password){
                 $notice = "Vale parool!";
             }
         } else {
-            $notice = "Kasutajat ".$email." ei leitud".$stmt ->error;
+            $notice = "Kasutajat ".$email." ei leitud";
         }
         $stmt -> close();//Kui ei õnnestu sisse logida paneme ikka asjad kinni
         $conn -> close();

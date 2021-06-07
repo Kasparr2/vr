@@ -21,7 +21,9 @@
     <h1>Tere tulemast <?php echo $_SESSION["user_first_name"] ." ".$_SESSION["user_last_name"]; ?></h1> <!--Lisan juurde sisselogija nime-->
     <p>See leht on valminud õppetöö raames!</p>
     <hr>
-    <p>Vajuta <a href = "show_news.php"> seda</a> kui soovid uudiseid lugeda!</p>
+    <p>Vajuta <a href = "show_news.php"> siia</a> kui soovid uudiseid lugeda!</p>
+    <p>Vajuta <a href = "add_news.php"> siia</a> kui soovid uudiseid lisada!</p>
+    <p><a href = "upload_photo.php">Fotode üleslaadimine!</a></p>
     <p><a href="?logout=1">Logi välja</a></p>
 </body>
 </html>

@@ -56,6 +56,8 @@
 	<input type="number" min="0" max="10" value="" name="count_news">
 	<input type="submit" name="show_news" value="Kuva uudised">
 	</form>
+    <p><a href = "home.php"> Tagasi avalehele!</a></p>
+    <p><a href="?logout=1">Logi välja</a></p>
     <hr>
     <?php echo $news_html; ?>
 </body>

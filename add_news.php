@@ -69,6 +69,8 @@
         <br>
         <input type="submit" name="news_submit" value="Salvesta uudis!">
     </form>
+    <p><a href = "home.php"> Tagasi avalehele!</a></p>
+    <p><a href="?logout=1">Logi välja</a></p>
     <p><?php echo $news_input_error; ?></p>
 </body>
 </html>
