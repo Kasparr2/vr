@@ -1,13 +1,17 @@
 <?php
 
     //session_start();
-    require("classes/SessionManager.class.php");
+    require_once "classes/SessionManager.class.php";
     SessionManager::sessionStart("vr", 0, "/~kaspar.reisenbuk/", "tigu.hk.tlu.ee");
 
     require_once "../../../conf.php";
     require_once "fnc_general.php";
     require_once "fnc_user.php";
-
+    require_once "classes/Test.class.php";    // klassi näide 
+    $test_object = new Test(5);
+    echo "Avalik number on ".$test_object -> non_secret .". ";        //Secreti ees ei ole $ sest testi ees juba on ja rohkem ei ole vaja.
+    $test_object -> reveal();
+    unset($test_object);
     $myname = "Kaspar Reisenbuk";
     $currenttime = date("d.m.Y H:i:s");
     $timehtml = "\n <p>Lehe avamise hetkel oli: " .$currenttime .".</p>";
@@ -25,7 +29,6 @@
     $currentweekday = $weekdays[date("w")]; //Kasutan inglise pärast, sest ladusin nädala alates pühapäevast.
     $today = "<p> Täna on " .$currentweekday ."</p>"; //Kuvab tänast päeva
 
-
     //Kodune Osa 2
     //Kui semester on peal.
     if($fromsemesterbegindays <= $semesterdurationdays){
@@ -39,8 +42,6 @@
     else{
         $semesterprogress = "\n <p>Semester on lõppenud</p> \n";
     }
-
-    
 
     $picsdir = "../pics/";      //Loeme piltide kataloogi sisu.
     $allfiles = array_slice(scandir($picsdir), 2);
@@ -123,6 +124,7 @@
     <input name="login_submit" type="submit" value="Logi sisse!"><span><?php echo $notice; ?></span>
     </form>
     <p>Loo endale <a href = "add_user.php">kasutajakonto!</a></p> <!--Lisame konto loomise nupu-->
+    <p>Siit leiad avalike piltide <a href = "gallery.php">galerii!</a></p> <!--Lisan galerii nupu-->
     <hr>
     <?php
         echo $timehtml;

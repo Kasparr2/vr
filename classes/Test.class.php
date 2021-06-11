@@ -6,17 +6,22 @@
         private $received_secret;
 
         //class funktsioonid ehk meetodid(methods)
-        function __construct($received) {
-            echo "klass on laetud, konstruktor töötab";
+        function __construct($received) {           //Käivitub sellel hetkel kui class kasutusele võetakse.
+            echo "Klass on laetud, konstruktor töötab! ";
             $this->received_secret = $received;
-            echo "Saabunud salajane number on: " .$this->received_secret;
+            echo " Saabunud salajane number on " .$this->received_secret .". ";
+            $this->multiplay();
         }
 
-        function __destruct() {
-            echo "Klass lõpetas!";
+        function __destruct() { 	    //Lõpetab konstruktori.
+            echo " Klass lõpetas! ";
         }
 
         public function reveal() {
-            echo "Täiesti salajane number on:". $this->secret .".";
+            echo " Täiesti salajane number on " .$this->secret .". ";
+        }
+
+        private function multiplay(){
+            echo " Korrutis on: " .$this->secret * $this->non_secret * $this->received_secret .". ";
         }
     } //class lõppeb
