@@ -24,6 +24,7 @@
     <p>Vajuta <a href = "show_news.php"> siia</a> kui soovid uudiseid lugeda!</p>
     <p>Vajuta <a href = "add_news.php"> siia</a> kui soovid uudiseid lisada!</p>
     <p><a href = "upload_photo.php">Fotode üleslaadimine!</a></p>
+    <p>Siit leiad avalike piltide <a href = "gallery.php">galerii!</a></p> <!--Lisan galerii nupu-->
     <p><a href="?logout=1">Logi välja</a></p>
 </body>
 </html>

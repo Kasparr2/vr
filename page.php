@@ -124,7 +124,6 @@
     <input name="login_submit" type="submit" value="Logi sisse!"><span><?php echo $notice; ?></span>
     </form>
     <p>Loo endale <a href = "add_user.php">kasutajakonto!</a></p> <!--Lisame konto loomise nupu-->
-    <p>Siit leiad avalike piltide <a href = "gallery.php">galerii!</a></p> <!--Lisan galerii nupu-->
     <hr>
     <?php
         echo $timehtml;
